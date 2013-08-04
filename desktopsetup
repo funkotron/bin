@@ -1,0 +1,12 @@
+#!/bin/bash
+
+#Set up external monitor if connected
+EXTERNAL=`xrandr | grep -i "HDMI1 disconnected"`
+if [ -z $EXTERNAL ]; then
+    xrandr --output HDMI1 --auto --left-of eDP1
+fi
+sleep 1
+#Set up main monitor
+xrandr --output eDP1 --auto
+#Load wallpaper
+/home/a/bin/random_wallpaper.sh &
